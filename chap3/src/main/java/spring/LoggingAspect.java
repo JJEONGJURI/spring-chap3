@@ -8,7 +8,7 @@ public class LoggingAspect {
 		System.out.println("[LA]로그 시작");
 		StopWatch sw = new StopWatch();
 		sw.start();
-		Object ret = joinPoint.proceed();
+		Object ret = joinPoint.proceed();//위로는 실행전 밑은 실행후
 		//joinpoint 는 순서를 가지고 있다
 		// : logging() => writer() => logging() => return
 		//내 다음 순서의 메서드를 호출해라 >> WriteImpl에 있는 write메서드 호출

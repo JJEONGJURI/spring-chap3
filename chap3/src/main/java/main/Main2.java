@@ -10,7 +10,7 @@ public class Main2 {
 
 	public static void main(String[] args) {
 		//환경만듬
-		String[] config = {"di.xml","aop2.xml"};
+		String[] config = {"di.xml","aop2.xml"};//di-> 핵심메서드 aop2->aop관련된내용 aop2 빼면 aop 실행안됨
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(config);
 		
 		// 객체가져와

@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- /chap3/src/main/java/aop.xml -->
+<!-- /chap3/src/main/java/aop.xml 
+	xmlns:xxx =>  name space 약자
+	name space -> "http://www.springframework.org/schema/aop"
+	xxx => 약자
+	aop 쓰려면 xmlns:aop 있어야 함
+	xsi:schemaLocation : 스키마 파일
+	 http://www.springframework.org/schema/beans/spring-beans.xsd
+	 : 인터넷을 통해 ...
+	
+-->
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
@@ -9,8 +18,9 @@
  http://www.springframework.org/schema/beans/spring-beans.xsd
  http://www.springframework.org/schema/context
  http://www.springframework.org/schema/context/spring-context.xsd
- http://www.springframework.org/schema/aop
+ http://www.springframework.org/schema/aop 
  http://www.springframework.org/schema/aop/spring-aop.xsd">
+ 
  	<bean id="write" class="spring.WriteImpl">
  		<constructor-arg><ref bean="articleDao" /></constructor-arg>
  	</bean>
@@ -18,7 +28,7 @@
  	<bean id="logging" class="spring.LoggingAspect" />
 	<!-- 
 		aop 관련 용어
-		  -	pointcut : 핵심기능을 가진 메서드 설정. 핵심메서드
+		  -	pointcut : 핵심기능을 가진 메서드 설정. 핵심메서드의 기준점
 			expression : 핵심메서드 설정
 			execution(public * spring.*Impl.*(..)) 
 					: spring 패키지의 클래스 중 이름이 ...Impl로 끝나는 클래스의 모든 public 메서드

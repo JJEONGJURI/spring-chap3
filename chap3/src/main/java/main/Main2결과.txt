@@ -1,0 +1,43 @@
+[ACA] cache before 실행
+	=>xml.ArticleCacheAdvice.cache() 메서드
+[LA]메서드 실행 전 전처리 수행 기능
+	=>LoggingAdvice.before() 메서드
+getArticleAndReadCnt(1) 호출
+	=>ReadArticleServiceImpl.getArticleAndReadCnt(1) 메서드
+[LA]메서드 정상 처리 후 수행 함. ret=xml.Article@3e27ba32
+	=>LoggingAdbice.afterReturning()메서드 ret=xml.Article@3e27ba32     : 해쉬코드 객체
+[LA]메서드 실행 후 수행함
+	=>LoggingAdbice.afterFinally() 메서드 // ArticleCacheAdbice 의 Object ret = joinPoint.proceed() 끝남
+[ACA] cache after 실행
+	=>xml.ArticleCacheAdvice.cache() 메서드
+[ACA] cache에서 Article[1] 추가함
+	=>xml.ArticleCacheAdvice.cache() 메서드
+	=============Main2 의 Article a1 = service.getArticleAndReadCnt(1); 끝
+
+[main] a1 :xml.Article@3e27ba32
+	=> main 메서드
+[ACA] cache before 실행
+	=>xml.ArticleCacheAdvice.cache() 메서드
+	=>System.out.println("[ACA] cache before 실행");
+[ACA] cache에서 Article[1] 가져옴
+	=>xml.ArticleCacheAdvice.cache() 메서드
+[main] a1==a2 :true
+	=>main 메서드 (실행은 안했는데 main에서 실행했다고 착각함)
+	========================================
+
+
+[ACA] cache before 실행
+	=>xml.ArticleCacheAdvice.cache() 메서드
+[LA]메서드 실행 전 전처리 수행 기능
+	=>LoggingAdvice.before() 메서드
+getArticleAndReadCnt(0) 호출
+	=>ReadArticleServiceImpl.getArticleAndReadCnt(0) 메서드
+	=>ReadArticleServiceImpl 의 System.out.println("getArticleAndReadCnt("+id+") 호출");
+[LA]메서드 예외 발생 후 수행함. 발생 예외=id는 0이 안됨
+	=>LoggingAdvice.afterThrowing() 메서드
+[LA]메서드 실행 후 수행함
+	=>LoggingAdbice.afterFinally() 메서드
+[main] id는 0이 안됨
+	=> main 메서드
+	=> main2 의 System.out.println("[main] " + e.getMessage());
+	=> 예외가 발생해서 xml.ArticleCacheAdvice.cache() 메서드 못감
