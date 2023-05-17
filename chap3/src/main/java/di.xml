@@ -12,6 +12,5 @@
  http://www.springframework.org/schema/aop
  http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<bean id="readArticleService" class="xml.ReadArticleServiceImpl" />
-	
-
+	<bean id="memberService" class="xml.MemberService" />
  </beans>
